@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.button {
+  @apply inline-block bg-blue-600 text-white rounded px-4 py-2;
+}
+
+.button.secondary {
+  @apply border bg-white text-black;
+}
+
+.button.danger {
+  @apply border border-red-800 bg-white text-red-800;
+}
+
+.field {
+  @apply space-y-1;
+  &.checkbox {
+    @apply flex items-center space-x-1.5;
+  }
+  label, em {
+    @apply text-sm;
+  }
+  input {
+    @apply inline-block border rounded-lg px-2 py-1;
+  }
+}

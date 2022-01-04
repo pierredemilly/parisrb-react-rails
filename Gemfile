@@ -22,6 +22,13 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# user authentication
+gem 'devise'
+
+# model serialization for json API
+gem 'active_model_serializers', '~> 0.10.0'
+
+# React/rails utilities
 gem 'react-rails'
 
 # Use Active Storage variant

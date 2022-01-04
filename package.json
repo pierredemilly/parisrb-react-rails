@@ -9,6 +9,7 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.4.3",
     "autoprefixer": "^10",
+    "axios": "^0.24.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "postcss": "^8",
     "postcss-loader": "^4",
