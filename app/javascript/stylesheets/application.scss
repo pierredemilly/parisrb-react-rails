@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+.tab {
+  @apply block px-8 py-2 bg-gray-200 text-gray-500 text-center flex-grow rounded-lg;
+  &.active {
+    @apply bg-blue-200 text-black;
+  }
+}
+
 .button {
   @apply inline-block bg-blue-600 text-white rounded px-4 py-2;
 }

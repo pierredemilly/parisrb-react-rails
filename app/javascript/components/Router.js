@@ -1,19 +1,19 @@
 import React from "react";
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Photos from "./Photos";
+import Profile from "./Profile";
 
 export default function Router() {
   return (
     <BrowserRouter>
+      <div className="flex w-full px-4 space-x-4 mb-6">
+        <NavLink to="/" className="tab">My Photos</NavLink>
+        <NavLink to="/profile" className="tab">My Profile</NavLink>
+      </div>
       <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<Home />} />
-          <Route path="teams" element={<Teams />}>
-            <Route path=":teamId" element={<Team />} />
-            <Route path="new" element={<NewTeamForm />} />
-            <Route index element={<LeagueStandings />} />
-          </Route>
-        </Route>
+        <Route path="/" element={<Photos />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
   );

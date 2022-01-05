@@ -13,4 +13,8 @@ Rails.application.routes.draw do
     resource :user, only: [:show, :update]
     resources :photos, only: [:index, :create, :update, :destroy]
   end
+
+  get '/:path', to: 'app#index'
+  get '/:path/:path', to: 'app#index'
+  get '/:path/:path/:path', to: 'app#index'
 end
