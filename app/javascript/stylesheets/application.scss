@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .tab {
-  @apply block px-8 py-2 bg-gray-200 text-gray-500 text-center flex-grow rounded-lg;
+  @apply block px-8 py-2 bg-gray-200 text-gray-500 text-center flex-grow rounded-lg font-medium;
   &.active {
     @apply bg-blue-200 text-black;
   }

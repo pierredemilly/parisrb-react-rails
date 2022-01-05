@@ -5,13 +5,19 @@ import { UserContext } from "../contexts/user-context";
 
 import Router from "./Router";
 import Header from "./Header";
+import { PhotosContext } from "../contexts/photos-context";
 
 export default function App() {
+  // User data
+
   const [user, setUser] = useState({});
 
   const loadUser = () => {
     axios.get("/api/user").then((res) => setUser(res.data));
   };
+
+  // load user from API on component initialization
+  useEffect(loadUser, []);
 
   const userValues = {
     user,
@@ -19,13 +25,29 @@ export default function App() {
     loadUser,
   };
 
-  // load user from API on component initialization
-  useEffect(loadUser, []);
+  // Photos data
+
+  const [photos, setPhotos] = useState([]);
+
+  const loadPhotos = () => {
+    axios.get("/api/photos").then((res) => setPhotos(res.data));
+  };
+
+  // load photos from API on component initialization
+  useEffect(loadPhotos, []);
+
+  const photosValues = {
+    photos,
+    setPhotos,
+    loadPhotos,
+  };
 
   return (
     <UserContext.Provider value={userValues}>
-      <Header />
-      <Router />
+      <PhotosContext.Provider value={photosValues}>
+        <Header />
+        <Router />
+      </PhotosContext.Provider>
     </UserContext.Provider>
   );
 }

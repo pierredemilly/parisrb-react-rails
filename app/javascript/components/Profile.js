@@ -1,17 +1,16 @@
-import React, { useContext, useState } from 'react'
-import axios from 'axios';
+import React, { useContext, useState } from "react";
+import axios from "axios";
 
-import { UserContext } from '../contexts/user-context';
+import { UserContext } from "../contexts/user-context";
 
-import TextInput from './TextInput';
+import TextInput from "./TextInput";
 
 export default function Profile(props) {
-
-  const {user, setUser} = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   // form uploading state
-  const [loading, setLoading] = useState(false)
-  
+  const [loading, setLoading] = useState(false);
+
   // upload progress from 0 to 1
   const [progress, setProgress] = useState(null);
 
@@ -33,7 +32,7 @@ export default function Profile(props) {
           if (evt.lengthComputable) {
             setProgress(evt.loaded / evt.total);
           }
-        }
+        },
       })
       .then((res) => {
         setUser(res.data);
@@ -44,7 +43,6 @@ export default function Profile(props) {
   };
 
   return (
-
     <form className="space-y-4 px-4" onSubmit={handleSaveUser}>
       <TextInput
         name="email"
@@ -71,12 +69,25 @@ export default function Profile(props) {
       <div className="field">
         <label htmlFor="picture">Profile picture</label>
         <br />
-        <input type="file" id="picture" name="picture" accept="image/*" disabled={loading} />
+        <input
+          type="file"
+          id="picture"
+          name="picture"
+          accept="image/*"
+          disabled={loading}
+        />
       </div>
 
-      {progress > 0 && progress < 1 && <progress max="1" value={progress} className="block" />}
+      {progress > 0 && progress < 1 && (
+        <progress max="1" value={progress} className="block" />
+      )}
 
-      <input type="submit" value="Save changes" className="button" disabled={loading} />
+      <input
+        type="submit"
+        value="Save changes"
+        className="button"
+        disabled={loading}
+      />
     </form>
-  )
+  );
 }

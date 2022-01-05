@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_one_attached :picture
 
+  has_many :photos
+
   validates :first_name, presence: { message: "First name required." }
   validates :last_name, presence: { message: "Last name required." }
   validates :email, presence: { message: "Email required." }
