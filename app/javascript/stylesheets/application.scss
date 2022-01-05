@@ -14,6 +14,10 @@
   @apply border border-red-800 bg-white text-red-800;
 }
 
+.button:disabled {
+  @apply opacity-75 pointer-events-none;
+}
+
 .field {
   @apply space-y-1;
   &.checkbox {
@@ -24,5 +28,8 @@
   }
   input {
     @apply inline-block border rounded-lg px-2 py-1;
+    &:disabled {
+      @apply opacity-60 cursor-not-allowed;
+    }
   }
 }

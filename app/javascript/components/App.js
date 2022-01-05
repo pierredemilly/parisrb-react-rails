@@ -6,30 +6,44 @@ export default function App() {
   const [user, setUser] = useState({});
 
   const loadUser = () => {
-    axios.get("/api/user").then((res) => {
-      console.log(res.data);
-      setUser(res.data);
-    });
+    axios.get("/api/user").then((res) => setUser(res.data));
   };
 
+  // load user from API on component initialization
   useEffect(loadUser, []);
 
+  // form uploading state
+  const [loading, setLoading] = useState(false)
+  
+  // upload progress from 0 to 1
+  const [progress, setProgress] = useState(null);
+
+  // key/value object of validation errors from backend
   const [errors, setErrors] = useState({});
 
+  // form submission to user api
   const handleSaveUser = (evt) => {
     evt.preventDefault();
+
+    setLoading(true);
 
     axios
       .patch("/api/user", new FormData(evt.target), {
         headers: {
           "X-CSRF-Token": document.querySelector("[name=csrf-token]").content,
         },
+        onUploadProgress: (evt) => {
+          if (evt.lengthComputable) {
+            setProgress(evt.loaded / evt.total);
+          }
+        }
       })
       .then((res) => {
         setUser(res.data);
         setErrors({});
       })
-      .catch((error) => setErrors(error.response.data));
+      .catch((error) => setErrors(error.response.data))
+      .then(() => setLoading(false));
   };
 
   return (
@@ -52,27 +66,32 @@ export default function App() {
           label="Email"
           defaultValue={user?.email}
           errors={errors?.email}
+          disabled={loading}
         />
         <TextInput
           name="first_name"
           label="First name"
           defaultValue={user?.first_name}
           errors={errors?.first_name}
+          disabled={loading}
         />
         <TextInput
           name="last_name"
           label="Last name"
           defaultValue={user?.last_name}
           errors={errors?.last_name}
+          disabled={loading}
         />
 
         <div className="field">
           <label htmlFor="picture">Profile picture</label>
           <br />
-          <input type="file" id="picture" name="picture" accept="image/*" />
+          <input type="file" id="picture" name="picture" accept="image/*" disabled={loading} />
         </div>
 
-        <input type="submit" value="Save changes" className="button" />
+        {progress > 0 && progress < 1 && <progress max="1" value={progress} className="block" />}
+
+        <input type="submit" value="Save changes" className="button" disabled={loading} />
       </form>
 
       <hr />
