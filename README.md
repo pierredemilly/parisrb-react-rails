@@ -1,24 +1,24 @@
-# README
+# Paris.rb - React on Rails - Best of both worlds
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a demo application for the talk React on Rails, best of both world.
+You can explore the code and reuse any part for your own projects.
 
-Things you may want to cover:
+This is a standard Rails app created with `rails new`.
 
-* Ruby version
+## Dependencies
 
-* System dependencies
+- Ruby
+- Node
+- Postgresql
 
-* Configuration
+## Configuration
 
-* Database creation
+```bundle install```
 
-* Database initialization
+```yarn```
 
-* How to run the test suite
+```rails db:setup```
 
-* Services (job queues, cache servers, search engines, etc.)
+## About
 
-* Deployment instructions
-
-* ...
+Learn more about us at [theschoolab.com](https://theschoolab.com)
