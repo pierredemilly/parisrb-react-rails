@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 
 import Photos from "./Photos";
 import Profile from "./Profile";
+import ReactForm from "./ReactForm";
 
 export default function Router() {
   return (
@@ -18,3 +19,5 @@ export default function Router() {
     </BrowserRouter>
   );
 }
+
+

@@ -20,5 +20,4 @@ class Api::UsersController < ApplicationController
     params.permit(:email, :first_name, :last_name, :picture)
   end
   
-  
 end

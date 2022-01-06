@@ -30,13 +30,13 @@
   &.checkbox {
     @apply flex items-center space-x-1.5;
   }
-  label, em {
-    @apply text-sm;
-  }
-  input {
-    @apply inline-block border rounded-lg px-2 py-1;
-    &:disabled {
-      @apply opacity-60 cursor-not-allowed;
-    }
+}
+label, em {
+  @apply text-sm;
+}
+input {
+  @apply inline-block border rounded-lg px-2 py-1;
+  &:disabled {
+    @apply opacity-60 cursor-not-allowed;
   }
 }

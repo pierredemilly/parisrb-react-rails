@@ -5,7 +5,8 @@ import { UserContext } from "../contexts/user-context";
 
 import TextInput from "./TextInput";
 
-export default function Profile(props) {
+export default function Profile() {
+  
   const { user, setUser } = useContext(UserContext);
 
   // form uploading state

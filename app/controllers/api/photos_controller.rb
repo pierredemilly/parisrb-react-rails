@@ -28,7 +28,7 @@ class Api::PhotosController < ApplicationController
   private
   
   def set_photo
-    @photo = current_user.find(params[:id])
+    @photo = current_user.photos.find(params[:id])
   end
   
   def photo_params
