@@ -13,8 +13,9 @@ Rails.application.routes.draw do
   end
 
   root to: 'app#index'
-  get '/:path', to: 'app#index'
-  get '/:path/:path', to: 'app#index'
-  get '/:path/:path/:path', to: 'app#index'
+  # catch all routes and send to React Router
+  get "*path", to: 'app#index', constraints: lambda { |req|
+    req.path.exclude? 'rails/active_storage'
+  }
 
 end
